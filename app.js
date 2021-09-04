@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 require('dotenv').config()
 const { PUSHOVER_TOKEN, PUSHOVER_USER, PRONOTE_URL, PRONOTE_USERNAME, PRONOTE_PASSWORD, SPECIFIC_DATE } = process.env
 const { login } = require('@dorian-eydoux/pronote-api')
