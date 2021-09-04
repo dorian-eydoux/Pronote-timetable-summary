@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "@dorian-eydoux/pronote-api": "^2.3.4",
+    "axios": "^0.21.2",
+    "dotenv": "^10.0.0",
+    "fecha": "^4.2.1",
+    "form-data": "^4.0.0"
+  }
+}
