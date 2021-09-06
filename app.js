@@ -19,22 +19,23 @@ const form = new require('form-data')()
 	form.append('url', 'pronote://')
 	form.append('html', '1')
 
+// Demain vous commencez par...
 const betterSubjects = {
 	'ANGLAIS LVA': { pronoun: "de l'", name: 'anglais' },
 	'AP FRANCAIS': { pronoun: "de l'", name: 'AP français' },
-	'CAMBRIDGE': { pronoun: '', name: 'Cambridge' },
-	'DS selon calendrier': { pronoun: 'un', name: 'DS' },
-	'ED.PHYSIQUE & SPORT.': { pronoun: 'du', name: 'sport' },
+	'CAMBRIDGE': { name: 'Cambridge' },
+	'DS selon calendrier': { pronoun: 'un ', name: 'DS' },
+	'ED.PHYSIQUE & SPORT.': { pronoun: 'du ', name: 'sport' },
 	'ENSEIGN.SCIENTIFIQUE': { pronoun: "de l'", name: 'enseignement scientifique' },
 	'ESPAGNOL LVB': { pronoun: "de l'", name: 'espagnol' },
-	FRANCAIS: { pronoun: 'du', name: 'français' },
+	FRANCAIS: { pronoun: 'du ', name: 'français' },
 	'HIST.GEO.EN.MOR.CIV.': { pronoun: "de l'", name: 'histoire, géo...' },
-	'MATHEMATIQUES SPE': { pronoun: 'la', name: 'spécialité mathématiques' },
-	'NUMERIQUE SC.INFORM. SPE': { pronoun: 'de la', name: 'NSI' },
-	'PHYSIQUE-CHIMIE': { pronoun: 'de la', name: 'physique-chimie' },
-	'PHYSIQUE-CHIMIE SPE': { pronoun: 'la', name: 'spécialité physique-chimie' },
-	'SCIENCES VIE & TERRE': { pronoun: 'de la', name: 'SVT' },
-	'VIE DE CLASSE': { pronoun: 'de la', name: 'vie de classe' }
+	'MATHEMATIQUES SPE': { pronoun: 'la ', name: 'spécialité mathématiques' },
+	'NUMERIQUE SC.INFORM. SPE': { pronoun: 'de la ', name: 'NSI' },
+	'PHYSIQUE-CHIMIE': { pronoun: 'de la ', name: 'physique-chimie' },
+	'PHYSIQUE-CHIMIE SPE': { pronoun: 'la ', name: 'spécialité physique-chimie' },
+	'SCIENCES VIE & TERRE': { pronoun: 'de la ', name: 'SVT' },
+	'VIE DE CLASSE': { pronoun: 'de la ', name: 'vie de classe' }
 };
 
 (async () => {
@@ -50,9 +51,9 @@ const betterSubjects = {
 		const { pronoun, name } = betterSubjects[subject]
 		const editedTimetable = fullTimetable.filter(({ hasDuplicate, status }) => hasDuplicate || status)
 
-		let message = `Demain vous commencez par ${bold(name ? pronoun + name : subject)} à ${bold(format(from, 'shortTime')) + (editedTimetable.length ? '\n' : '')}`
+		let message = `Demain vous commencez par ${(pronoun || '') + bold(name || subject)} à ${bold(format(from, 'shortTime')) + (editedTimetable.length ? '\n' : '')}`
 		for (const { isAway, isCancelled, subject, status } of editedTimetable) {
-			const [ symbol, color ] = isAway || isCancelled ? ['×', '#ff3b30'] : ['↻', '#007AFF']
+			const [ symbol, color ] = isAway || isCancelled ? ['×', '#ff3b30'] : ['↻', '#007aff']
 			message += `\n${bold(`${symbol} ${capitalize(betterSubjects[subject].name || subject)}`)}, ${colorize(uncapitalize(status || 'aucun statut'), color)}`
 		}
 
