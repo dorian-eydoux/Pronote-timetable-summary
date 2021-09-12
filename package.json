@@ -1,4 +1,5 @@
 {
+  "main": "app.js",
   "dependencies": {
     "@dorian-eydoux/pronote-api": "^2.3.4",
     "axios": "^0.21.2",
